@@ -83,7 +83,7 @@ $produkList = $koneksi->query("SELECT * FROM produk ORDER BY created_at DESC");
 </div>
 
 <footer>
-    &copy; <?= date('Y') ?> Toko Kamera Online. Semua hak dilindungi.
+    &copy; 2024 <?= date('Y') ?> Toko Kamera Online. Semua hak dilindungi.
 </footer>
 
 <script src="js/script.js"></script>

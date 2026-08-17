@@ -98,14 +98,14 @@ while ($row = $hasil->fetch_assoc()) {
                 Total: Rp <?= number_format($total, 0, ',', '.') ?>
             </h3>
             <div style="text-align:right; margin-top:10px;">
-                <button class="btn" style="width:auto; padding:12px 28px;">Checkout</button>
+                <a href="checkout.php" class="btn" style="width:auto; padding:12px 28px; display:inline-block;">Checkout</a>
             </div>
         <?php endif; ?>
     </div>
 </div>
 
 <footer>
-    &copy; <?= date('Y') ?> Toko Kamera Online. Semua hak dilindungi.
+    &copy; 2024 <?= date('Y') ?> Toko Kamera Online. Semua hak dilindungi.
 </footer>
 
 <script src="js/script.js"></script>

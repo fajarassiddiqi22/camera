@@ -20,7 +20,7 @@ require_once __DIR__ . '/config/db.php';
 </section>
 
 <footer>
-    &copy; <?= date('Y') ?> Toko Kamera Online. Semua hak dilindungi.
+    &copy; 2024 <?= date('Y') ?> Toko Kamera Online. Semua hak dilindungi.
 </footer>
 
 <script src="js/script.js"></script>

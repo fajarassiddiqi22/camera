@@ -33,6 +33,34 @@ CREATE TABLE keranjang (
     FOREIGN KEY (produk_id) REFERENCES produk(id) ON DELETE CASCADE
 );
 
+-- Tabel pesanan (dibuat saat checkout)
+CREATE TABLE pesanan (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    user_id INT NOT NULL,
+    nama_penerima VARCHAR(100) NOT NULL,
+    alamat_pengiriman TEXT NOT NULL,
+    no_hp VARCHAR(20) NOT NULL,
+    metode_pengiriman ENUM('Reguler','Express','Same Day') NOT NULL,
+    biaya_pengiriman DECIMAL(12,2) NOT NULL DEFAULT 0,
+    metode_pembayaran ENUM('Transfer Bank','COD','E-Wallet') NOT NULL,
+    subtotal_produk DECIMAL(12,2) NOT NULL,
+    total_bayar DECIMAL(12,2) NOT NULL,
+    status ENUM('Menunggu Pembayaran','Diproses','Dikirim','Selesai') DEFAULT 'Menunggu Pembayaran',
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
+);
+ 
+-- Tabel detail pesanan (snapshot produk saat checkout, supaya riwayat tidak berubah walau produk diedit/dihapus)
+CREATE TABLE pesanan_detail (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    pesanan_id INT NOT NULL,
+    nama_produk VARCHAR(150) NOT NULL,
+    harga DECIMAL(12,2) NOT NULL,
+    jumlah INT NOT NULL,
+    subtotal DECIMAL(12,2) NOT NULL,
+    FOREIGN KEY (pesanan_id) REFERENCES pesanan(id) ON DELETE CASCADE
+);
+
 -- Akun admin default (password: 230040151)
 INSERT INTO users (nama, email, password, role) VALUES
 ('Fajar', 'admin@tokokamera.com', '230040151', 'admin');
